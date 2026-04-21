@@ -2,25 +2,25 @@ import Link from 'next/link'
 
 const footerLinks = {
   Product: [
-    { label: 'Chrome Extension', href: '#' },
-    { label: 'CLI Tool', href: '#' },
-    { label: 'Design Skills Library', href: '#' },
-    { label: 'Team Registry', href: '#' },
-    { label: 'Pricing', href: '/pricing' },
+    { label: 'Chrome Extension', href: 'https://chromewebstore.google.com', external: true },
+    { label: 'CLI Tool', href: '/docs#cli-reference', external: false },
+    { label: 'Design Skills Library', href: '/docs#design-skills', external: false },
+    { label: 'Team Registry', href: '/pricing', external: false },
+    { label: 'Pricing', href: '/pricing', external: false },
   ],
   Developers: [
-    { label: 'CLI Docs', href: '#' },
-    { label: 'API Reference', href: '#' },
-    { label: 'GitHub', href: '#' },
-    { label: 'Changelog', href: '#' },
-    { label: 'Status', href: '#' },
+    { label: 'CLI Docs', href: '/docs#cli-reference', external: false },
+    { label: 'API Reference', href: '/docs', external: false },
+    { label: 'GitHub', href: 'https://github.com/yigityldzzz/stylekit', external: true },
+    { label: 'npm Package', href: 'https://www.npmjs.com/package/stylekit-ai', external: true },
+    { label: 'Changelog', href: 'https://github.com/yigityldzzz/stylekit/commits/main', external: true },
   ],
   Company: [
-    { label: 'About', href: '#' },
-    { label: 'Blog', href: '#' },
-    { label: 'Twitter', href: '#' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'About', href: 'https://digitaladexpert.de', external: true },
+    { label: 'Twitter / X', href: 'https://x.com/DigitalExpertDE', external: true },
+    { label: 'Contact', href: 'mailto:info@digitaladexpert.de', external: true },
+    { label: 'Privacy Policy', href: '#', external: false },
+    { label: 'Terms of Service', href: '#', external: false },
   ],
 }
 
@@ -55,7 +55,9 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex items-center gap-3">
               <a
-                href="#"
+                href="https://github.com/yigityldzzz/stylekit"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"
                 aria-label="GitHub"
               >
@@ -64,7 +66,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://x.com/DigitalExpertDE"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"
                 aria-label="Twitter / X"
               >
@@ -86,6 +90,8 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
                       className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
                     >
                       {link.label}
@@ -103,7 +109,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-zinc-600">
             © {new Date().getFullYear()} StyleKit by{' '}
-            <a href="#" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+            <a href="https://digitaladexpert.de" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
               Digital Ad Expert
             </a>
             . All rights reserved.
