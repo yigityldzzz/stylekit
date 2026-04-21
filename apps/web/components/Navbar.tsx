@@ -119,7 +119,7 @@ export default function Navbar() {
               { href: '#features', label: 'Features' },
               { href: '#how-it-works', label: 'How it works' },
               { href: '/pricing', label: 'Pricing' },
-              { href: '#', label: 'Docs' },
+              { href: '/docs', label: 'Docs' },
             ].map((item) => (
               <a
                 key={item.label}
