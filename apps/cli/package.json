@@ -1,10 +1,10 @@
 {
-  "name": "stylekit-cli",
-  "version": "0.1.0",
-  "description": "StyleKit CLI - Apply design systems to your AI-generated code",
+  "name": "stylekit-ai",
+  "version": "0.1.1",
+  "description": "StyleKit CLI - Extract and apply design systems to your AI-generated code",
   "main": "dist/index.js",
   "bin": {
-    "stylekit": "./dist/index.js"
+    "stylekit": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

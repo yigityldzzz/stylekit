@@ -40,7 +40,7 @@ const plans = [
       'Everything in Free',
       'Unlimited Design Skills',
       'Framework export (Tailwind, Bootstrap, CSS)',
-      'CLI tool (npx stylekit)',
+      'CLI tool (npx stylekit-ai)',
       'Full token extraction',
       'Spacing & shadow analysis',
       'Export as JSON / SCSS',

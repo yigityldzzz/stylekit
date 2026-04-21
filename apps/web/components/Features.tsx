@@ -58,7 +58,7 @@ const features = [
       <>
         Run{' '}
         <code className="text-violet-400 font-mono text-xs bg-violet-500/10 px-1.5 py-0.5 rounded">
-          npx stylekit pull [skill]
+          npx stylekit-ai pull [skill]
         </code>{' '}
         to pull any design system directly into your project. Works with any framework.
       </>

@@ -109,7 +109,7 @@ export default function Hero() {
               <code className="text-sm font-mono text-zinc-300">
                 <span className="text-zinc-600">$</span>{' '}
                 <span className="text-violet-400">npx</span>{' '}
-                <span className="text-zinc-200">stylekit pull vercel</span>
+                <span className="text-zinc-200">stylekit-ai pull vercel</span>
               </code>
             </div>
           </div>

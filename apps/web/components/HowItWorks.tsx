@@ -100,7 +100,7 @@ const steps = [
 ]
 
 const cliExample = `# Apply Vercel's design system to your project
-$ npx stylekit pull vercel
+$ npx stylekit-ai pull vercel
 
 > Fetching skill: vercel
 > Writing DESIGN.md...
