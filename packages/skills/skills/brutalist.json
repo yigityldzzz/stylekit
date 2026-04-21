@@ -1,0 +1,146 @@
+{
+  "name": "brutalist",
+  "version": "1.0.0",
+  "description": "Raw, unapologetic brutalist web design with heavy borders, harsh contrasts, and zero decorative polish",
+  "tags": ["brutalist", "bold", "raw", "high-contrast", "editorial", "anti-design"],
+  "preview": {
+    "primaryColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "accentColor": "#ffe000"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#ffffff",
+      "accent": "#ffe000",
+      "accentAlt": "#ff2d00",
+      "background": "#ffffff",
+      "surface": "#f5f5f5",
+      "border": "#000000",
+      "text": {
+        "primary": "#000000",
+        "secondary": "#1a1a1a",
+        "muted": "#4a4a4a",
+        "inverse": "#ffffff"
+      },
+      "semantic": {
+        "success": "#00c853",
+        "warning": "#ffe000",
+        "error": "#ff2d00",
+        "info": "#2979ff"
+      },
+      "highlights": {
+        "yellow": "#ffe000",
+        "red": "#ff2d00",
+        "blue": "#2979ff",
+        "green": "#00c853"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Space Grotesk", "Arial Black", "Helvetica", "sans-serif"],
+        "mono": ["Space Mono", "Courier New", "monospace"],
+        "display": ["Anton", "Impact", "Arial Black", "sans-serif"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.25rem",
+        "xl": "1.5rem",
+        "2xl": "2rem",
+        "3xl": "2.5rem",
+        "4xl": "3.5rem",
+        "5xl": "5rem",
+        "6xl": "7rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "bold": 700,
+        "black": 900
+      },
+      "lineHeight": {
+        "tight": 0.9,
+        "normal": 1.1,
+        "relaxed": 1.4
+      },
+      "textTransform": {
+        "heading": "uppercase"
+      },
+      "letterSpacing": {
+        "tight": "-0.02em",
+        "normal": "0",
+        "wide": "0.05em",
+        "wider": "0.15em"
+      }
+    },
+    "spacing": {
+      "base": "8px",
+      "scale": [0, 8, 16, 24, 32, 48, 64, 96, 128, 192]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0",
+      "base": "0",
+      "md": "0",
+      "lg": "0",
+      "xl": "0",
+      "2xl": "0",
+      "full": "0"
+    },
+    "borders": {
+      "thin": "1px solid #000000",
+      "base": "2px solid #000000",
+      "thick": "4px solid #000000",
+      "heavy": "6px solid #000000",
+      "brutal": "8px solid #000000",
+      "accent": "4px solid #ffe000",
+      "error": "4px solid #ff2d00"
+    },
+    "shadows": {
+      "sm": "3px 3px 0 0 #000000",
+      "base": "4px 4px 0 0 #000000",
+      "md": "6px 6px 0 0 #000000",
+      "lg": "8px 8px 0 0 #000000",
+      "xl": "12px 12px 0 0 #000000",
+      "accent": "6px 6px 0 0 #ffe000",
+      "error": "6px 6px 0 0 #ff2d00",
+      "invert": "-4px -4px 0 0 #000000"
+    },
+    "motion": {
+      "duration": {
+        "fast": "80ms",
+        "normal": "150ms",
+        "slow": "250ms"
+      },
+      "easing": {
+        "default": "linear",
+        "snap": "steps(1)",
+        "in": "cubic-bezier(0.4, 0, 1, 1)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "yellow-brutal": "#ffe000",
+        "red-brutal": "#ff2d00",
+        "blue-brutal": "#2979ff"
+      },
+      "fontFamily": {
+        "sans": ["Space Grotesk", "Arial Black", "Helvetica", "sans-serif"],
+        "mono": ["Space Mono", "Courier New", "monospace"],
+        "display": ["Anton", "Impact", "Arial Black", "sans-serif"]
+      },
+      "boxShadow": {
+        "brutal-sm": "3px 3px 0 0 #000000",
+        "brutal": "4px 4px 0 0 #000000",
+        "brutal-md": "6px 6px 0 0 #000000",
+        "brutal-lg": "8px 8px 0 0 #000000",
+        "brutal-xl": "12px 12px 0 0 #000000",
+        "brutal-accent": "6px 6px 0 0 #ffe000"
+      }
+    }
+  },
+  "designMd": "# Design System: Brutalist\n\n## Philosophy\nBrutalism rejects decoration. Raw structure is the design. Black borders at 4–8px, pixel-perfect hard shadows (no blur), all-caps headings, yellow highlights as the only non-black non-white color. Inspired by Swiss punk posters and early web zines. Discomfort is intentional.\n\n## Colors\nStrict three-color palette:\n- **Black**: `#000000` — Borders, text, backgrounds on inverted sections.\n- **White**: `#ffffff` — Background, text on black sections.\n- **Yellow**: `#ffe000` — The only accent. Used for hover states, highlights, important badges.\n- **Red**: `#ff2d00` — Errors and warnings ONLY. Not decorative.\n\nBreaking this palette is only acceptable for semantic states.\n\n## Typography\n- **Headings**: **Anton** (or Impact). ALL CAPS. Tight line-height (0.9–1.0). Large — go to 5xl or 6xl. Negative letter-spacing.\n- **Body**: **Space Grotesk** for UI labels and body copy. Bold (700).\n- **Code/Mono**: **Space Mono**.\n- Never center-align body copy. Left-align only.\n\n## Borders\nBorders are structural, not decorative. Every interactive element has a `4px solid #000000` border. Cards have `4px` borders. Modals: `6px`. Important CTAs: `8px`.\n\n## Brutal Shadows\nHard offset box shadows with zero blur — these are the core visual device:\n- Default card: `4px 4px 0 0 #000000`\n- Hover state: shadow shrinks to `2px 2px`, element shifts `2px 2px` to simulate pressing\n- Active/pressed: shadow becomes `0 0`, element shifts fully `4px 4px`\n\nThis creates a physical button-press illusion with no CSS transitions (use `steps(1)` or `linear` at 80ms).\n\n## Layout\nAsymmetric grids are encouraged. Intentional misalignment signals confidence. Use large negative margins for headline overflows. Columns can be 1/3–2/3 splits rather than equal.\n\n## Component Principles\n- **Buttons**: Black border, black shadow, white/yellow background. On hover: fill turns yellow, shadow shifts. On active: fully pressed.\n- **Cards**: 4px black border, `brutal-md` shadow. Yellow background variant for featured content.\n- **Forms**: 2px black border inputs, no border-radius. Label is bold uppercase above field.\n- **Navigation**: Fixed top bar. Black background, white text, yellow hover underline (2px solid yellow, not CSS underline).\n- **Tables**: All borders visible. Header row: black background, white text. Alternating rows: white/`#f5f5f5`.\n\n## Anti-patterns\n- No rounded corners.\n- No blurred shadows.\n- No gradients.\n- No subtle or muted colors besides text muted.\n- No thin (1px) borders on interactive elements.\n- No smooth easing — snap transitions only.\n- No centered or justified text blocks."
+}

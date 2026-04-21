@@ -1,0 +1,150 @@
+{
+  "name": "retro",
+  "version": "1.0.0",
+  "description": "8-bit inspired design system with pixel-perfect aesthetics, CRT-style palette, and monospace typography",
+  "tags": ["retro", "pixel", "8-bit", "monospace", "crt", "nostalgic"],
+  "preview": {
+    "primaryColor": "#00ff41",
+    "backgroundColor": "#0d0208",
+    "accentColor": "#ff6b35"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#00ff41",
+      "secondary": "#00b4d8",
+      "accent": "#ff6b35",
+      "background": "#0d0208",
+      "surface": "#1a0d1a",
+      "border": "#00ff41",
+      "text": {
+        "primary": "#00ff41",
+        "secondary": "#00b4d8",
+        "muted": "#1a5c2a"
+      },
+      "palette": {
+        "green": "#00ff41",
+        "cyan": "#00ffff",
+        "magenta": "#ff00ff",
+        "yellow": "#ffff00",
+        "red": "#ff0000",
+        "blue": "#0000ff",
+        "orange": "#ff6b35",
+        "white": "#ffffff",
+        "darkGreen": "#003b00"
+      },
+      "semantic": {
+        "success": "#00ff41",
+        "warning": "#ffff00",
+        "error": "#ff0000",
+        "info": "#00ffff"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Press Start 2P", "Courier New", "monospace"],
+        "mono": ["VT323", "Courier New", "monospace"],
+        "display": ["Press Start 2P", "monospace"]
+      },
+      "fontSize": {
+        "xs": "0.5rem",
+        "sm": "0.625rem",
+        "base": "0.75rem",
+        "lg": "0.875rem",
+        "xl": "1rem",
+        "2xl": "1.25rem",
+        "3xl": "1.5rem",
+        "4xl": "2rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "bold": 700
+      },
+      "lineHeight": {
+        "tight": 1.5,
+        "normal": 2,
+        "relaxed": 2.5
+      },
+      "letterSpacing": {
+        "normal": "0.05em",
+        "wide": "0.1em",
+        "wider": "0.2em"
+      }
+    },
+    "spacing": {
+      "base": "8px",
+      "scale": [0, 8, 16, 24, 32, 40, 48, 64, 80, 96]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0",
+      "base": "0",
+      "md": "0",
+      "lg": "0",
+      "xl": "0",
+      "2xl": "0",
+      "full": "0"
+    },
+    "borders": {
+      "thin": "1px solid #00ff41",
+      "base": "2px solid #00ff41",
+      "thick": "4px solid #00ff41",
+      "double": "4px double #00ff41",
+      "dashed": "2px dashed #00ff41"
+    },
+    "shadows": {
+      "sm": "2px 2px 0 #003b00",
+      "base": "4px 4px 0 #003b00",
+      "md": "6px 6px 0 #003b00",
+      "lg": "8px 8px 0 #003b00",
+      "xl": "12px 12px 0 #003b00",
+      "crt": "0 0 8px rgba(0,255,65,0.8), 0 0 16px rgba(0,255,65,0.4), 0 0 32px rgba(0,255,65,0.2)",
+      "inset": "inset 2px 2px 0 #003b00, inset -1px -1px 0 #00ff41"
+    },
+    "effects": {
+      "scanlines": "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px)",
+      "crtVignette": "radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "50ms",
+        "normal": "100ms",
+        "slow": "200ms",
+        "blink": "500ms"
+      },
+      "easing": {
+        "default": "steps(1)",
+        "step2": "steps(2)",
+        "step4": "steps(4)",
+        "linear": "linear"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "phosphor": "#00ff41",
+        "crt": {
+          "green": "#00ff41",
+          "dark": "#0d0208",
+          "dim": "#1a5c2a"
+        }
+      },
+      "fontFamily": {
+        "pixel": ["Press Start 2P", "monospace"],
+        "vt": ["VT323", "Courier New", "monospace"]
+      },
+      "animation": {
+        "blink": "blink 500ms steps(1) infinite",
+        "scanline": "scanline 8s linear infinite",
+        "flicker": "flicker 0.15s infinite"
+      },
+      "keyframes": {
+        "blink": {
+          "0%, 100%": { "opacity": "1" },
+          "50%": { "opacity": "0" }
+        }
+      }
+    }
+  },
+  "designMd": "# Design System: Retro\n\n## Philosophy\nChannel the golden age of computing: CRT terminals, phosphor glow, pixel precision. No anti-aliasing, no gradients, no rounded corners. Every element must feel like it could run on a 1982 green-screen terminal. This is nostalgia weaponized as a design choice.\n\n## Colors\n- **Background**: `#0d0208` — Almost-black with a faint purple tint, like a CRT in a dark room.\n- **Surface**: `#1a0d1a` — Slightly lighter for panels.\n- **Primary / Text**: `#00ff41` — Classic Matrix/phosphor green. Used for ALL primary text and borders.\n- **Secondary**: `#00b4d8` — CRT cyan for secondary info.\n- **Accent**: `#ff6b35` — Amber/orange for warnings and highlights; the other classic CRT color.\n- **Glow**: Achieved via `crt` shadow: `0 0 8px rgba(0,255,65,0.8)`.\n\n## Typography\n**Press Start 2P** for headings and UI labels — pixel bitmap font, no smoothing. **VT323** for body text — large pixel mono that reads like a terminal. NEVER use proportional fonts. Letter-spacing should always be wide. All caps for headings.\n\n## Borders\nNo border-radius anywhere — ever. All borders are solid `#00ff41`. Use pixel-offset box-shadows (`4px 4px 0 #003b00`) instead of blurred drop-shadows to create hard pixel depth.\n\n## CRT Effects\n- **Scanlines**: Apply `effects.scanlines` as a pseudo-element overlay (`::after`) on the root container.\n- **Vignette**: Apply `effects.crtVignette` on a fixed full-screen overlay.\n- **Phosphor Glow**: Apply `shadows.crt` to active/focused elements.\n- **Blink Cursor**: Animate `opacity: 0↔1` at `500ms steps(1)` on cursor characters.\n\n## Motion\nAll animations use `steps()` — no smooth tweening. This is pixel-perfect, frame-by-frame movement. Transitions: `steps(1)` for instant state changes, `steps(4)` for multi-frame animations.\n\n## Component Principles\n- **Buttons**: Green text, green border, dark background. Hover: inverted (dark text on green bg). Active: pixel-depth shadow inverted.\n- **Inputs**: No background, green border, green text. Cursor: blinking block (`▮`).\n- **Windows/Panels**: Double-border style (`4px double #00ff41`). Title bar with ASCII art patterns.\n- **Progress Bars**: ASCII-style (`[████░░░░░░] 40%`).\n- **Alerts/Notifications**: Start with `>` or `!!` prefix, like terminal output.\n\n## ASCII Decorations\nUse box-drawing characters for panel borders:\n```\n╔══════════════════╗\n║  SYSTEM ONLINE   ║\n╚══════════════════╝\n```\n\n## Anti-patterns\n- No rounded corners — zero, none.\n- No blur effects.\n- No smooth easing transitions.\n- No sans-serif proportional fonts.\n- No gradients on any surface.\n- No colored backgrounds except dark greens/blacks."
+}

@@ -1,0 +1,135 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Bold, energetic design system for modern startups and SaaS products",
+  "tags": ["startup", "saas", "bold", "modern", "energetic", "indigo"],
+  "preview": {
+    "primaryColor": "#4f46e5",
+    "backgroundColor": "#fafafa",
+    "accentColor": "#7c3aed"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#4f46e5",
+      "secondary": "#7c3aed",
+      "accent": "#06b6d4",
+      "background": "#fafafa",
+      "surface": "#ffffff",
+      "border": "#e0e7ff",
+      "text": {
+        "primary": "#1e1b4b",
+        "secondary": "#4338ca",
+        "muted": "#818cf8"
+      },
+      "semantic": {
+        "success": "#059669",
+        "warning": "#d97706",
+        "error": "#e11d48",
+        "info": "#0891b2"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        "mono": ["Fira Code", "JetBrains Mono", "monospace"],
+        "display": ["Cal Sans", "Plus Jakarta Sans", "sans-serif"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem",
+        "6xl": "3.75rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700,
+        "extrabold": 800
+      },
+      "lineHeight": {
+        "tight": 1.2,
+        "normal": 1.5,
+        "relaxed": 1.75
+      }
+    },
+    "spacing": {
+      "base": "4px",
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0.25rem",
+      "base": "0.5rem",
+      "md": "0.75rem",
+      "lg": "1rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "full": "9999px"
+    },
+    "shadows": {
+      "sm": "0 1px 3px 0 rgb(79 70 229 / 0.08)",
+      "base": "0 2px 8px 0 rgb(79 70 229 / 0.12)",
+      "md": "0 4px 16px -2px rgb(79 70 229 / 0.15)",
+      "lg": "0 8px 32px -4px rgb(79 70 229 / 0.18)",
+      "xl": "0 16px 48px -8px rgb(79 70 229 / 0.22)",
+      "glow": "0 0 24px 0 rgb(79 70 229 / 0.35)"
+    },
+    "gradients": {
+      "primary": "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+      "accent": "linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%)",
+      "hero": "linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "150ms",
+        "normal": "250ms",
+        "slow": "400ms"
+      },
+      "easing": {
+        "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "in": "cubic-bezier(0.4, 0, 1, 1)",
+        "out": "cubic-bezier(0, 0, 0.2, 1)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "brand": {
+          "50": "#eef2ff",
+          "100": "#e0e7ff",
+          "400": "#818cf8",
+          "500": "#4f46e5",
+          "600": "#4338ca",
+          "700": "#3730a3",
+          "900": "#1e1b4b"
+        },
+        "violet": {
+          "500": "#7c3aed",
+          "600": "#6d28d9"
+        },
+        "cyan": {
+          "400": "#06b6d4"
+        }
+      },
+      "fontFamily": {
+        "sans": ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        "display": ["Cal Sans", "Plus Jakarta Sans", "sans-serif"],
+        "mono": ["Fira Code", "JetBrains Mono", "monospace"]
+      },
+      "backgroundImage": {
+        "gradient-primary": "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+        "gradient-hero": "linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%)"
+      }
+    }
+  },
+  "designMd": "# Design System: Startup\n\n## Philosophy\nBold, opinionated, and full of energy. This system is for products that want to make a statement on day one. Gradients, generous white space, oversized typography, and a violet-indigo palette signal ambition. Every landing page should feel like a product launch.\n\n## Colors\n- **Primary**: `#4f46e5` — Indigo. The signature color of modern SaaS.\n- **Secondary**: `#7c3aed` — Deep violet for gradients and secondary CTAs.\n- **Accent**: `#06b6d4` — Cyan as the contrast pop. Use for data highlights and badges.\n- **Background**: `#fafafa` — Very slightly warm off-white so pure white cards lift off it.\n- **Surface**: `#ffffff` — Cards and panels.\n- **Border**: `#e0e7ff` — Indigo-tinted borders for a cohesive feel.\n\n## Typography\n**Plus Jakarta Sans** for UI, **Cal Sans** for hero headings. Use extrabold (800) for hero headlines — go big. The font size scale extends to 6xl for landing page hero copy. Letter-spacing: `-0.02em` on headings above 2xl.\n\n## Gradients\nGradients are first-class citizens here. Use `gradient-primary` (indigo → violet) for primary buttons and key CTAs. Use `gradient-hero` for full-bleed hero backgrounds. Never apply gradients to text on light backgrounds — reserve text gradients for dark sections.\n\n## Spacing\nMore generous than usual. Section vertical padding: 96px–128px. Cards: 32px inner padding. Use the spring easing (`cubic-bezier(0.34, 1.56, 0.64, 1)`) for hover/active transitions to add life.\n\n## Borders & Radius\nRounded corners at every level: `base` (8px) for inputs and chips, `lg` (16px) for cards, `2xl` (24px) for feature callouts, `full` for pills and avatars.\n\n## Shadows\nColored shadows (indigo-tinted) reinforce the brand. Cards use `base` shadow, CTAs use `glow` on hover, modals use `xl`.\n\n## Component Principles\n- **Primary Button**: Gradient background `#4f46e5 → #7c3aed`, white text, `glow` shadow on hover, `spring` easing scale on click.\n- **Feature Cards**: `1px` indigo-tinted border, `base` shadow, `lg` radius.\n- **Pricing Cards**: Highlighted tier uses gradient border (via `background-clip`).\n- **Testimonials**: Oversized quotation mark in `#e0e7ff`, clean attribution typography.\n- **Navigation**: Frosted glass on scroll (`backdrop-blur-md bg-white/80`).\n\n## Motion\nUse `spring` easing for micro-interactions (hover lifts, button presses). Page transitions: `400ms` with `out` easing. Loading states use a shimmer gradient animation.\n\n## Anti-patterns\n- No flat, non-gradient primary buttons — this system needs energy.\n- No navy or dark blue tones — they fight with the indigo palette.\n- No system fonts in headings — load Plus Jakarta Sans.\n- No subtle or muted shadows — they undermine the boldness."
+}

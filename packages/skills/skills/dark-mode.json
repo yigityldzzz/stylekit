@@ -1,0 +1,121 @@
+{
+  "name": "dark-mode",
+  "version": "1.0.0",
+  "description": "Deep dark UI with zinc surfaces and carefully tuned neon accents for developer tools and productivity apps",
+  "tags": ["dark", "developer", "productivity", "zinc", "neon", "geist"],
+  "preview": {
+    "primaryColor": "#a78bfa",
+    "backgroundColor": "#09090b",
+    "accentColor": "#22d3ee"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#a78bfa",
+      "secondary": "#818cf8",
+      "accent": "#22d3ee",
+      "background": "#09090b",
+      "surface": "#18181b",
+      "surfaceElevated": "#27272a",
+      "border": "#3f3f46",
+      "borderSubtle": "#27272a",
+      "text": {
+        "primary": "#fafafa",
+        "secondary": "#a1a1aa",
+        "muted": "#52525b"
+      },
+      "semantic": {
+        "success": "#4ade80",
+        "warning": "#fbbf24",
+        "error": "#f87171",
+        "info": "#38bdf8"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Geist", "Inter", "system-ui", "sans-serif"],
+        "mono": ["Geist Mono", "JetBrains Mono", "monospace"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "lineHeight": {
+        "tight": 1.25,
+        "normal": 1.5,
+        "relaxed": 1.75
+      }
+    },
+    "spacing": {
+      "base": "4px",
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0.25rem",
+      "base": "0.375rem",
+      "md": "0.5rem",
+      "lg": "0.75rem",
+      "xl": "1rem",
+      "2xl": "1.5rem",
+      "full": "9999px"
+    },
+    "shadows": {
+      "sm": "0 1px 3px 0 rgb(0 0 0 / 0.4)",
+      "base": "0 2px 6px 0 rgb(0 0 0 / 0.5)",
+      "md": "0 4px 12px -2px rgb(0 0 0 / 0.6)",
+      "lg": "0 8px 24px -4px rgb(0 0 0 / 0.7)",
+      "xl": "0 16px 40px -8px rgb(0 0 0 / 0.8)",
+      "glow-primary": "0 0 16px 0 rgb(167 139 250 / 0.4)",
+      "glow-accent": "0 0 16px 0 rgb(34 211 238 / 0.4)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "120ms",
+        "normal": "200ms",
+        "slow": "300ms"
+      },
+      "easing": {
+        "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "in": "cubic-bezier(0.4, 0, 1, 1)",
+        "out": "cubic-bezier(0, 0, 0.2, 1)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "zinc": {
+          "950": "#09090b",
+          "900": "#18181b",
+          "800": "#27272a",
+          "700": "#3f3f46",
+          "400": "#a1a1aa",
+          "300": "#d4d4d8"
+        },
+        "violet": {
+          "400": "#a78bfa"
+        },
+        "cyan": {
+          "400": "#22d3ee"
+        }
+      },
+      "fontFamily": {
+        "sans": ["Geist", "Inter", "system-ui", "sans-serif"],
+        "mono": ["Geist Mono", "JetBrains Mono", "monospace"]
+      }
+    }
+  },
+  "designMd": "# Design System: Dark Mode\n\n## Philosophy\nBuilt for the terminal generation. This system goes beyond 'just inverting' a light theme — it's engineered from the ground up for dark environments. Zinc-950 (`#09090b`) is near-black but not pure black, reducing halation. Accents are picked for luminance and contrast on dark surfaces, not on light ones.\n\n## Colors\n- **Background**: `#09090b` — Zinc-950. Deep enough to feel premium, not so dark it looks broken.\n- **Surface**: `#18181b` — Zinc-900. Cards, sidebars, and panels sit one step above background.\n- **Surface Elevated**: `#27272a` — Zinc-800. Dropdowns, tooltips, command palettes.\n- **Border**: `#3f3f46` — Zinc-700. Visible separators without blooming on dark backgrounds.\n- **Primary Accent**: `#a78bfa` — Violet-400. Chosen for readability at this luminance level.\n- **Accent**: `#22d3ee` — Cyan-400. Complements violet; used for data, links, and info states.\n- **Text Primary**: `#fafafa` — Near-white. Never use pure `#ffffff` on dark backgrounds.\n- **Text Secondary**: `#a1a1aa` — Zinc-400 for supporting text.\n- **Text Muted**: `#52525b` — Zinc-600 for placeholders and disabled states.\n\n## Typography\n**Geist** (Vercel's typeface) for both sans and mono. It's optimized for dark interfaces and code-adjacent tools. Geist Mono for all code blocks, terminals, and inline code.\n\n## Elevation System\nDark mode uses surface color (not shadow) to communicate elevation:\n1. Background (`#09090b`) — Canvas\n2. Surface (`#18181b`) — Primary panels, cards\n3. Surface Elevated (`#27272a`) — Menus, popovers, tooltips\n4. Overlay (`#3f3f46` tinted) — Modal backdrops\n\nShadows are heavy and dark (0.4–0.8 opacity) to work on dark surfaces.\n\n## Glow Effects\nUse glow shadows (`glow-primary`, `glow-accent`) on focused inputs, active tab indicators, and hover states for interactive elements. Never apply on static/non-interactive elements.\n\n## Component Principles\n- **Buttons**: Violet-400 text with transparent/subtle background for primary. Solid violet-500 fill for high-emphasis. Ghost outline for secondary.\n- **Code Blocks**: `#18181b` background, `#3f3f46` border, Geist Mono 14px, syntax highlighting with cyan/violet/green/yellow.\n- **Inputs**: `#18181b` background, `#3f3f46` border. Focus: `#a78bfa` ring, `glow-primary` shadow.\n- **Command Palette**: Full-overlay with `backdrop-blur-xl`, `surfaceElevated` background.\n- **Scrollbars**: Custom; thumb `#3f3f46`, track `#18181b`, 6px width.\n\n## Anti-patterns\n- No pure `#000000` backgrounds — it looks broken on OLED.\n- No pure `#ffffff` text — causes eye strain.\n- No light-only shadow values — they're invisible on dark surfaces.\n- No blue links — they disappear into the dark. Use violet or cyan.\n- No colored section backgrounds — let elevation do that work."
+}

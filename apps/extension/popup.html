@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleKit</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="logo">
+      <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="9" height="9" rx="2" fill="#6C63FF"/>
+        <rect x="13" y="2" width="9" height="9" rx="2" fill="#FF6584"/>
+        <rect x="2" y="13" width="9" height="9" rx="2" fill="#43C6AC"/>
+        <rect x="13" y="13" width="9" height="9" rx="2" fill="#FFD166"/>
+      </svg>
+      <span class="logo-text">StyleKit</span>
+    </div>
+    <span class="version-badge">v1.0</span>
+  </header>
+
+  <!-- ── Site info ───────────────────────────────────────────────────────── -->
+  <div class="site-info">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="#6C63FF" stroke-width="2"/>
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" stroke="#6C63FF" stroke-width="2"/>
+    </svg>
+    <span id="site-url" class="site-url">Loading…</span>
+  </div>
+
+  <!-- ── Main content ────────────────────────────────────────────────────── -->
+  <main class="main">
+    <!-- Idle state -->
+    <div id="state-idle" class="state">
+      <p class="hint-text">Extract design tokens from this page — colors, fonts, spacing, shadows, and more.</p>
+      <button id="btn-extract" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Extract Styles
+      </button>
+    </div>
+
+    <!-- Loading state -->
+    <div id="state-loading" class="state hidden">
+      <div class="spinner-wrap">
+        <div class="spinner"></div>
+        <p class="loading-text">Analysing page styles…</p>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div id="state-error" class="state hidden">
+      <p class="error-text" id="error-message">Something went wrong.</p>
+      <button id="btn-retry" class="btn btn-secondary">Try Again</button>
+    </div>
+
+    <!-- Results state -->
+    <div id="state-results" class="state hidden">
+
+      <!-- Colors section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Colors
+          <span id="colors-count" class="badge">0</span>
+        </h2>
+        <div id="colors-grid" class="colors-grid"></div>
+      </section>
+
+      <!-- Typography section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="4 7 4 4 20 4 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="9" y1="20" x2="15" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Typography
+        </h2>
+        <div class="token-list" id="typography-list"></div>
+      </section>
+
+      <!-- Spacing section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="21" y1="10" x2="3" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="14" x2="3" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="3" y1="6" x2="3" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="6" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Spacing
+        </h2>
+        <div id="spacing-chips" class="chip-row"></div>
+      </section>
+
+      <!-- Border Radius section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Border Radius
+        </h2>
+        <div id="radius-chips" class="chip-row"></div>
+      </section>
+
+      <!-- Shadows section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 21h13M21 8v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Shadows
+        </h2>
+        <div id="shadows-list" class="token-list"></div>
+      </section>
+
+      <!-- Action buttons -->
+      <div class="action-row">
+        <button id="btn-copy" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Copy
+        </button>
+        <button id="btn-download" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download
+        </button>
+      </div>
+
+      <!-- Re-extract -->
+      <button id="btn-reextract" class="btn btn-ghost">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="1 4 1 10 7 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3.51 15a9 9 0 1 0 .49-5.12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Re-extract
+      </button>
+    </div>
+  </main>
+
+  <!-- ── Toast notification ─────────────────────────────────────────────── -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

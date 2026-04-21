@@ -1,0 +1,21 @@
+{
+  "name": "@stylekit/skills",
+  "version": "1.0.0",
+  "description": "Official design skill library for StyleKit",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "schema.json",
+    "skills/"
+  ],
+  "keywords": [
+    "stylekit",
+    "design-system",
+    "design-tokens",
+    "tailwind",
+    "ui"
+  ],
+  "license": "MIT"
+}

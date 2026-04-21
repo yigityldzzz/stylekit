@@ -1,0 +1,168 @@
+{
+  "name": "ocean",
+  "version": "1.0.0",
+  "description": "Deep ocean-inspired design with teal, cyan, and midnight blue tones, organic shapes, and fluid motion",
+  "tags": ["ocean", "teal", "cyan", "nature", "organic", "fluid", "deep-blue"],
+  "preview": {
+    "primaryColor": "#0d9488",
+    "backgroundColor": "#f0fdfc",
+    "accentColor": "#0891b2"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#0d9488",
+      "secondary": "#0891b2",
+      "accent": "#06b6d4",
+      "deep": "#0c4a6e",
+      "background": "#f0fdfc",
+      "surface": "#ffffff",
+      "surfaceDeep": "#ecfeff",
+      "border": "#99f6e4",
+      "text": {
+        "primary": "#0c4a6e",
+        "secondary": "#155e75",
+        "muted": "#67a9b8"
+      },
+      "palette": {
+        "teal-50": "#f0fdfa",
+        "teal-100": "#ccfbf1",
+        "teal-200": "#99f6e4",
+        "teal-400": "#2dd4bf",
+        "teal-500": "#14b8a6",
+        "teal-600": "#0d9488",
+        "teal-700": "#0f766e",
+        "teal-800": "#115e59",
+        "teal-900": "#134e4a",
+        "cyan-400": "#22d3ee",
+        "cyan-500": "#06b6d4",
+        "cyan-600": "#0891b2",
+        "navy-900": "#0c4a6e",
+        "navy-800": "#075985",
+        "navy-700": "#0369a1"
+      },
+      "semantic": {
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#e11d48",
+        "info": "#0891b2"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["DM Sans", "Inter", "system-ui", "sans-serif"],
+        "mono": ["JetBrains Mono", "Fira Code", "monospace"],
+        "display": ["Fraunces", "Georgia", "serif"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "lineHeight": {
+        "tight": 1.25,
+        "normal": 1.6,
+        "relaxed": 1.8
+      }
+    },
+    "spacing": {
+      "base": "4px",
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0.375rem",
+      "base": "0.5rem",
+      "md": "0.75rem",
+      "lg": "1rem",
+      "xl": "1.5rem",
+      "2xl": "2rem",
+      "3xl": "3rem",
+      "full": "9999px",
+      "organic": "30% 70% 70% 30% / 30% 30% 70% 70%"
+    },
+    "shadows": {
+      "sm": "0 1px 3px 0 rgba(13,148,136,0.08)",
+      "base": "0 2px 8px 0 rgba(13,148,136,0.12), 0 1px 2px -1px rgba(13,148,136,0.08)",
+      "md": "0 4px 16px -2px rgba(13,148,136,0.15)",
+      "lg": "0 8px 32px -4px rgba(13,148,136,0.18)",
+      "xl": "0 16px 48px -8px rgba(13,148,136,0.22)",
+      "deep": "0 8px 40px -4px rgba(12,74,110,0.25)",
+      "teal-glow": "0 0 20px rgba(13,148,136,0.3), 0 0 40px rgba(13,148,136,0.1)"
+    },
+    "gradients": {
+      "primary": "linear-gradient(135deg, #0d9488 0%, #0891b2 100%)",
+      "deep": "linear-gradient(180deg, #0c4a6e 0%, #0d9488 100%)",
+      "surface": "linear-gradient(135deg, #f0fdfc 0%, #ecfeff 100%)",
+      "wave": "linear-gradient(180deg, #06b6d4 0%, #0891b2 40%, #0c4a6e 100%)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "200ms",
+        "normal": "350ms",
+        "slow": "600ms",
+        "wave": "2000ms"
+      },
+      "easing": {
+        "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "fluid": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "wave": "cubic-bezier(0.37, 0, 0.63, 1)",
+        "bounce": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "ocean": {
+          "50": "#f0fdfa",
+          "100": "#ccfbf1",
+          "200": "#99f6e4",
+          "400": "#2dd4bf",
+          "500": "#0d9488",
+          "600": "#0f766e",
+          "700": "#115e59",
+          "900": "#134e4a"
+        },
+        "deep": "#0c4a6e",
+        "wave": "#06b6d4"
+      },
+      "fontFamily": {
+        "sans": ["DM Sans", "Inter", "system-ui", "sans-serif"],
+        "display": ["Fraunces", "Georgia", "serif"],
+        "mono": ["JetBrains Mono", "Fira Code", "monospace"]
+      },
+      "backgroundImage": {
+        "gradient-ocean": "linear-gradient(135deg, #0d9488 0%, #0891b2 100%)",
+        "gradient-wave": "linear-gradient(180deg, #06b6d4 0%, #0891b2 40%, #0c4a6e 100%)",
+        "gradient-surface": "linear-gradient(135deg, #f0fdfc 0%, #ecfeff 100%)"
+      },
+      "animation": {
+        "wave": "wave 2s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite"
+      },
+      "keyframes": {
+        "wave": {
+          "0%, 100%": { "transform": "translateY(0px)" },
+          "50%": { "transform": "translateY(-6px)" }
+        },
+        "float": {
+          "0%, 100%": { "transform": "translateY(0px) rotate(0deg)" },
+          "50%": { "transform": "translateY(-10px) rotate(2deg)" }
+        }
+      }
+    }
+  },
+  "designMd": "# Design System: Ocean\n\n## Philosophy\nFluid, natural, and calming. This system draws from the ocean's depth — the crystal-clear shallows of teal, the vibrant mid-water cyan, and the commanding midnight navy of the deep. Organic shapes replace geometric rigidity. Motion is slow, fluid, and wave-like.\n\n## Colors\nBuilt on a teal-cyan-navy triad:\n- **Primary**: `#0d9488` — Teal-600. Confident, natural, action color.\n- **Secondary**: `#0891b2` — Cyan-600. Information, links, secondary actions.\n- **Accent**: `#06b6d4` — Cyan-500. Highlights and data emphasis.\n- **Deep**: `#0c4a6e` — Midnight navy. Headings, heavy text, footer backgrounds.\n- **Background**: `#f0fdfc` — Teal-50. The palest, most delicate sea surface.\n- **Surface**: `#ffffff` — Cards lifted above the teal-tinted background.\n- **Border**: `#99f6e4` — Teal-200. Delicate, color-coordinated borders.\n\n## Shadows\nAll shadows are tinted with the primary teal color (`rgba(13,148,136,X)`), not generic black. This keeps the shadow in family with the palette and avoids the muddy look that black shadows create on teal surfaces.\n\n## Typography\n- **DM Sans** for all UI text — clean, modern, slightly humanist.\n- **Fraunces** (optical serif) for editorial headings — brings the organic, natural quality.\n- Mix: Use Fraunces for landing page hero copy and blog headings, DM Sans for everything UI-related.\n\n## Organic Shapes\nUse `borderRadius.organic` (`30% 70% 70% 30% / 30% 30% 70% 70%`) for hero images, illustration containers, and decorative elements. Combine with a `wave` animation for subtle life.\n\n## Gradients\n- `gradient-ocean` (teal → cyan) — primary CTAs and feature highlights.\n- `gradient-wave` (cyan → cyan-600 → navy) — hero backgrounds, full-bleed sections.\n- `gradient-surface` — subtle background variation for sections.\n\n## Motion\n- `wave` animation: gentle 6px vertical oscillation at 2s. Use on floating elements.\n- `float` animation: 10px float + 2deg rotation at 3s. Use on illustration characters.\n- `fluid` easing for all transitions — never mechanical.\n- Transitions are deliberately slower (350ms normal) to feel like water, not electricity.\n\n## Component Principles\n- **Buttons**: Primary uses `gradient-ocean`, `xl` radius, `teal-glow` shadow on hover.\n- **Cards**: White, `lg` radius, teal-tinted shadow. Feature card: `gradient-surface` background.\n- **Inputs**: White background, `teal-200` border, `primary` focus ring.\n- **Navigation**: White background, deep navy (`#0c4a6e`) text, teal active indicator.\n- **Hero Sections**: `gradient-wave` background, white text, organic blob shapes as decorations.\n- **Data/Charts**: Teal-500 primary series, cyan-400 secondary, navy-700 tertiary. Clean grid in teal-100.\n\n## Anti-patterns\n- No warm colors (orange, red, yellow) except semantic states — they clash with the cool palette.\n- No sharp corners on decorative elements — everything curves.\n- No fast, mechanical animations — always fluid and slow.\n- No dark surfaces — this is a light-mode system anchored in nature.\n- No pure black text — use navy (`#0c4a6e`) as the darkest text color."
+}

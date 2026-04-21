@@ -1,0 +1,104 @@
+{
+  "name": "minimal",
+  "version": "1.0.0",
+  "description": "Clean, minimal design system focused on whitespace and typography",
+  "tags": ["minimal", "clean", "whitespace", "typography", "modern"],
+  "preview": {
+    "primaryColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "accentColor": "#6366f1"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#374151",
+      "accent": "#6366f1",
+      "background": "#ffffff",
+      "surface": "#f9fafb",
+      "border": "#e5e7eb",
+      "text": {
+        "primary": "#111827",
+        "secondary": "#6b7280",
+        "muted": "#9ca3af"
+      },
+      "semantic": {
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "info": "#3b82f6"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Inter", "system-ui", "sans-serif"],
+        "mono": ["JetBrains Mono", "monospace"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "lineHeight": {
+        "tight": 1.25,
+        "normal": 1.5,
+        "relaxed": 1.75
+      }
+    },
+    "spacing": {
+      "base": "4px",
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0.125rem",
+      "base": "0.25rem",
+      "md": "0.375rem",
+      "lg": "0.5rem",
+      "xl": "0.75rem",
+      "2xl": "1rem",
+      "full": "9999px"
+    },
+    "shadows": {
+      "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "base": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+      "md": "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+      "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+      "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "150ms",
+        "normal": "200ms",
+        "slow": "300ms"
+      },
+      "easing": {
+        "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "in": "cubic-bezier(0.4, 0, 1, 1)",
+        "out": "cubic-bezier(0, 0, 0.2, 1)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "accent": "#6366f1"
+      },
+      "fontFamily": {
+        "sans": ["Inter", "system-ui", "sans-serif"],
+        "mono": ["JetBrains Mono", "monospace"]
+      }
+    }
+  },
+  "designMd": "# Design System: Minimal\n\n## Philosophy\nLess is more. This system strips away all decorative excess and lets content breathe through generous whitespace, razor-sharp typography, and a near-monochromatic palette. Every pixel earns its place.\n\n## Colors\n- **Primary**: `#000000` — Pure black for headings, CTAs, and high-emphasis elements.\n- **Secondary**: `#374151` — Warm dark gray for body text and supporting content.\n- **Accent**: `#6366f1` — Indigo as the single splash of color; use sparingly for links and interactive focus states.\n- **Background**: `#ffffff` — Absolute white. No tinting.\n- **Surface**: `#f9fafb` — Near-white for cards, sidebars, and code blocks.\n- **Border**: `#e5e7eb` — Hairline dividers; 1px only.\n\n## Typography\nUse **Inter** at all times. Scale follows an 8-point rhythm. Headings are semibold (600) or bold (700). Body text is regular (400) at 1rem / 1.5 line-height. Never mix more than two weights on a single screen.\n\n## Spacing\nAll spacing is derived from a 4px base grid. Prefer multiples of 8 (8, 16, 24, 32, 48) for layout. Use 4px increments only for fine-grained intra-component adjustments.\n\n## Borders & Radius\nKeep radii small: 4px (`base`) for inputs and cards, 6px (`md`) for modals. Avoid `full` radius on anything other than avatars and badges.\n\n## Shadows\nShadows should be imperceptible — just enough to establish elevation. Never use more than one shadow level on the same surface.\n\n## Motion\nAll transitions use `200ms` with `ease-in-out`. Reserve `300ms` for page-level transitions only. No animations purely for decoration.\n\n## Component Principles\n- **Buttons**: Solid black primary, ghost secondary. No gradients.\n- **Cards**: White background, 1px `#e5e7eb` border, 4px radius. No shadow by default.\n- **Forms**: Underline or minimal-border inputs. Label above field, never inline.\n- **Icons**: Line icons only (Lucide or Phosphor). 20px default size.\n\n## Anti-patterns\n- No gradients on UI surfaces.\n- No decorative illustrations in the chrome.\n- No more than 3 font sizes in a single component.\n- No colored backgrounds on sections unless absolutely necessary."
+}

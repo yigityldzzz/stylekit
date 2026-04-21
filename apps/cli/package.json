@@ -1,0 +1,39 @@
+{
+  "name": "stylekit-cli",
+  "version": "0.1.0",
+  "description": "StyleKit CLI - Apply design systems to your AI-generated code",
+  "main": "dist/index.js",
+  "bin": {
+    "stylekit": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "dev:init": "tsx src/index.ts init",
+    "dev:list": "tsx src/index.ts list",
+    "dev:pull": "tsx src/index.ts pull minimal",
+    "dev:generate": "tsx src/index.ts generate"
+  },
+  "keywords": [
+    "stylekit",
+    "design-system",
+    "cli",
+    "tailwind",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.10",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.15.7",
+    "typescript": "^5.4.5"
+  }
+}

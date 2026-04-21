@@ -1,0 +1,137 @@
+{
+  "name": "glassmorphism",
+  "version": "1.0.0",
+  "description": "Frosted glass surfaces, gradient borders, and layered transparency for immersive UIs",
+  "tags": ["glassmorphism", "blur", "transparent", "gradient", "frosted", "layered"],
+  "preview": {
+    "primaryColor": "#8b5cf6",
+    "backgroundColor": "#0f0f23",
+    "accentColor": "#ec4899"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#8b5cf6",
+      "secondary": "#ec4899",
+      "accent": "#06b6d4",
+      "background": "#0f0f23",
+      "backgroundGradient": "linear-gradient(135deg, #0f0f23 0%, #1a0533 50%, #0f1a2e 100%)",
+      "surface": "rgba(255, 255, 255, 0.06)",
+      "surfaceHover": "rgba(255, 255, 255, 0.1)",
+      "surfaceActive": "rgba(255, 255, 255, 0.14)",
+      "border": "rgba(255, 255, 255, 0.12)",
+      "borderGradient": "linear-gradient(135deg, rgba(139,92,246,0.5), rgba(236,72,153,0.5))",
+      "text": {
+        "primary": "#f0f0ff",
+        "secondary": "rgba(240, 240, 255, 0.7)",
+        "muted": "rgba(240, 240, 255, 0.4)"
+      },
+      "semantic": {
+        "success": "#34d399",
+        "warning": "#fbbf24",
+        "error": "#f87171",
+        "info": "#38bdf8"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": ["Outfit", "Inter", "system-ui", "sans-serif"],
+        "mono": ["JetBrains Mono", "Fira Code", "monospace"]
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "lineHeight": {
+        "tight": 1.25,
+        "normal": 1.5,
+        "relaxed": 1.75
+      }
+    },
+    "spacing": {
+      "base": "4px",
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+    },
+    "borderRadius": {
+      "none": "0",
+      "sm": "0.5rem",
+      "base": "0.75rem",
+      "md": "1rem",
+      "lg": "1.25rem",
+      "xl": "1.5rem",
+      "2xl": "2rem",
+      "full": "9999px"
+    },
+    "blur": {
+      "sm": "blur(4px)",
+      "base": "blur(12px)",
+      "md": "blur(20px)",
+      "lg": "blur(40px)",
+      "xl": "blur(64px)"
+    },
+    "shadows": {
+      "sm": "0 2px 8px 0 rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)",
+      "base": "0 4px 16px 0 rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)",
+      "md": "0 8px 32px 0 rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
+      "lg": "0 16px 48px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.12)",
+      "xl": "0 24px 64px 0 rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.14)",
+      "glow-violet": "0 0 32px 0 rgba(139,92,246,0.5)",
+      "glow-pink": "0 0 32px 0 rgba(236,72,153,0.5)"
+    },
+    "motion": {
+      "duration": {
+        "fast": "150ms",
+        "normal": "250ms",
+        "slow": "400ms"
+      },
+      "easing": {
+        "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "smooth": "cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+      }
+    }
+  },
+  "tailwind": {
+    "extend": {
+      "colors": {
+        "glass": {
+          "white-6": "rgba(255,255,255,0.06)",
+          "white-10": "rgba(255,255,255,0.10)",
+          "white-14": "rgba(255,255,255,0.14)",
+          "border": "rgba(255,255,255,0.12)"
+        },
+        "violet": {
+          "400": "#8b5cf6"
+        },
+        "pink": {
+          "400": "#ec4899"
+        }
+      },
+      "fontFamily": {
+        "sans": ["Outfit", "Inter", "system-ui", "sans-serif"],
+        "mono": ["JetBrains Mono", "Fira Code", "monospace"]
+      },
+      "backdropBlur": {
+        "glass": "12px",
+        "glass-lg": "20px"
+      },
+      "backgroundImage": {
+        "gradient-border": "linear-gradient(135deg, rgba(139,92,246,0.5), rgba(236,72,153,0.5))",
+        "gradient-canvas": "linear-gradient(135deg, #0f0f23 0%, #1a0533 50%, #0f1a2e 100%)"
+      }
+    }
+  },
+  "designMd": "# Design System: Glassmorphism\n\n## Philosophy\nDepth through transparency. This system creates a sense of layered reality — surfaces that you can see through, edges defined by light rather than hard color. The rich dark background gradient provides the 'scene' that glass elements float over.\n\n## Background\nThe canvas is never flat. Use `backgroundGradient`: `linear-gradient(135deg, #0f0f23 → #1a0533 → #0f1a2e)`. Background meshes, noise textures, or blurred colored orbs (`blur-xl` circles of violet/pink/cyan) enhance the glass effect.\n\n## Colors\n- **Background**: `#0f0f23` — Deep space navy. Provides depth for the glass layers.\n- **Surface**: `rgba(255,255,255,0.06)` — 6% white. The standard glass card fill.\n- **Surface Hover**: `rgba(255,255,255,0.10)` — Subtle brightening on interaction.\n- **Border**: `rgba(255,255,255,0.12)` — Frosted edge. Always 1px.\n- **Primary**: `#8b5cf6` — Violet for interactive elements.\n- **Secondary**: `#ec4899` — Pink for gradients and highlights.\n- **Accent**: `#06b6d4` — Cyan for data and badges.\n\n## Glass Card Recipe\n```css\nbackground: rgba(255, 255, 255, 0.06);\nbackdrop-filter: blur(12px);\n-webkit-backdrop-filter: blur(12px);\nborder: 1px solid rgba(255, 255, 255, 0.12);\nborder-radius: 1rem;\nbox-shadow: 0 4px 16px 0 rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);\n```\n\n## Gradient Border Recipe\nFor premium cards, use a pseudo-element gradient border:\n```css\nbackground: linear-gradient(#0f0f23, #0f0f23) padding-box,\n            linear-gradient(135deg, rgba(139,92,246,0.5), rgba(236,72,153,0.5)) border-box;\nborder: 1px solid transparent;\n```\n\n## Typography\n**Outfit** — a modern, slightly rounded sans-serif that feels at home in atmospheric UIs. Use semibold (600) for headings, regular (400) for body.\n\n## Blur Levels\n- `blur(4px)` — Subtle overlays\n- `blur(12px)` — Standard glass cards\n- `blur(20px)` — Heavy modals and drawers\n- `blur(40px+)` — Background decorative orbs\n\n## Shadows\nAll shadows include an `inset 0 1px 0 rgba(255,255,255,X)` to simulate light hitting the top edge of the glass — this is what makes it look real.\n\n## Component Principles\n- **Cards**: Standard glass recipe above. All have `1.5rem` radius.\n- **Modals**: `blur(20px)` backdrop, `xl` shadow, gradient border.\n- **Navigation**: Glass nav with `blur(12px)`, sticky at top.\n- **Buttons**: Semi-transparent fill, gradient border, white text. Hover: `surfaceHover` + `glow-violet`.\n- **Orb Decorations**: Place `blur-xl` (80-160px) colored circles behind card grids as ambient light sources. Use violet, pink, and cyan at 20-30% opacity.\n\n## Anti-patterns\n- No glass on glass — always require a non-glass background behind glass elements.\n- No light background scenes — glass only works over dark, colorful backgrounds.\n- No more than 3 layers of glass depth in a single view.\n- No fully opaque surfaces — use surface colors everywhere, not solid fills."
+}

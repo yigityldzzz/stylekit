@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stylekit.dev/schemas/skill.json",
+  "title": "StyleKit Skill",
+  "description": "Schema for a StyleKit design skill definition",
+  "type": "object",
+  "required": ["name", "version", "description", "tags", "preview", "tokens"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique kebab-case identifier for the skill",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the skill",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short human-readable description of the skill's aesthetic"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Searchable tags for filtering skills",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "preview": {
+      "type": "object",
+      "description": "Quick-preview color values for UI thumbnails",
+      "required": ["primaryColor", "backgroundColor", "accentColor"],
+      "additionalProperties": false,
+      "properties": {
+        "primaryColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "backgroundColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "accentColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Design token definitions",
+      "required": ["colors", "typography", "spacing", "borderRadius", "shadows", "motion"],
+      "properties": {
+        "colors": {
+          "type": "object",
+          "required": ["primary", "secondary", "accent", "background", "surface", "border", "text", "semantic"],
+          "properties": {
+            "primary": { "type": "string" },
+            "secondary": { "type": "string" },
+            "accent": { "type": "string" },
+            "background": { "type": "string" },
+            "surface": { "type": "string" },
+            "border": { "type": "string" },
+            "text": {
+              "type": "object",
+              "required": ["primary", "secondary", "muted"],
+              "properties": {
+                "primary": { "type": "string" },
+                "secondary": { "type": "string" },
+                "muted": { "type": "string" }
+              }
+            },
+            "semantic": {
+              "type": "object",
+              "required": ["success", "warning", "error", "info"],
+              "properties": {
+                "success": { "type": "string" },
+                "warning": { "type": "string" },
+                "error": { "type": "string" },
+                "info": { "type": "string" }
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "typography": {
+          "type": "object",
+          "required": ["fontFamily", "fontSize", "fontWeight", "lineHeight"],
+          "properties": {
+            "fontFamily": {
+              "type": "object",
+              "properties": {
+                "sans": { "type": "array", "items": { "type": "string" } },
+                "mono": { "type": "array", "items": { "type": "string" } },
+                "display": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "fontSize": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            },
+            "fontWeight": {
+              "type": "object",
+              "additionalProperties": { "type": "number" }
+            },
+            "lineHeight": {
+              "type": "object",
+              "additionalProperties": { "type": "number" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "spacing": {
+          "type": "object",
+          "required": ["base", "scale"],
+          "properties": {
+            "base": { "type": "string" },
+            "scale": { "type": "array", "items": { "type": "number" } }
+          }
+        },
+        "borderRadius": {
+          "type": "object",
+          "required": ["none", "base", "full"],
+          "additionalProperties": { "type": "string" }
+        },
+        "shadows": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "motion": {
+          "type": "object",
+          "required": ["duration", "easing"],
+          "properties": {
+            "duration": {
+              "type": "object",
+              "required": ["fast", "normal", "slow"],
+              "additionalProperties": { "type": "string" }
+            },
+            "easing": {
+              "type": "object",
+              "required": ["default"],
+              "additionalProperties": { "type": "string" }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "tailwind": {
+      "type": "object",
+      "description": "Tailwind CSS theme extension config",
+      "properties": {
+        "extend": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "designMd": {
+      "type": "string",
+      "description": "Markdown design system documentation, suitable for pasting into AI context"
+    }
+  }
+}
