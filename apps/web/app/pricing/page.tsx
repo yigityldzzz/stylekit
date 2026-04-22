@@ -69,7 +69,7 @@ export default function PricingPage() {
             </h2>
             <p className="text-zinc-500 text-sm">
               Can&apos;t find the answer?{' '}
-              <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors">
+              <a href="mailto:info@digitaladexpert.de" className="text-violet-400 hover:text-violet-300 transition-colors">
                 Contact us
               </a>
             </p>
@@ -121,7 +121,7 @@ export default function PricingPage() {
                 Add to Chrome — Free
               </a>
               <a
-                href="#"
+                href="/docs"
                 className="flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-medium rounded-xl transition-all duration-200 hover:bg-white/5"
               >
                 View Docs

@@ -227,7 +227,7 @@ export default function Pricing({ standalone = false }: { standalone?: boolean }
         <div className="mt-12 text-center">
           <p className="text-sm text-zinc-600">
             All plans include a 7-day free trial. No credit card required to start.{' '}
-            <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors">
+            <a href="mailto:info@digitaladexpert.de" className="text-violet-400 hover:text-violet-300 transition-colors">
               Contact us
             </a>{' '}
             for enterprise pricing.

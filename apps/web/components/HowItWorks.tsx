@@ -195,7 +195,7 @@ export default function HowItWorks() {
                 The StyleKit CLI lets you pull design skills directly into your project, generate config files, and keep your design system in sync — all from your terminal.
               </p>
               <div className="mt-5 flex items-center gap-3">
-                <a href="#" className="text-sm text-violet-400 hover:text-violet-300 font-medium flex items-center gap-1.5 transition-colors">
+                <a href="/docs#cli-reference" className="text-sm text-violet-400 hover:text-violet-300 font-medium flex items-center gap-1.5 transition-colors">
                   CLI Documentation
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>

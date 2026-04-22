@@ -123,7 +123,7 @@ export default function Footer() {
               Terms of Service
             </a>
             <span className="text-zinc-800">·</span>
-            <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+            <a href="/cookies" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
               Cookies
             </a>
           </div>

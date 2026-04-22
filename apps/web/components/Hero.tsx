@@ -79,7 +79,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="/docs"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/5"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
