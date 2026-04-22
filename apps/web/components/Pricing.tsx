@@ -32,9 +32,9 @@ const plans = [
     name: 'Pro',
     price: { monthly: 5, yearly: 49 },
     description: 'For developers who want the full design extraction workflow.',
-    cta: 'Get Pro',
+    cta: 'Coming Soon',
     ctaHref: '#',
-    ctaStyle: 'bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-900/40 hover:shadow-violet-900/60',
+    ctaStyle: 'bg-zinc-800 text-zinc-500 cursor-not-allowed',
     popular: true,
     features: [
       'Everything in Free',
@@ -56,9 +56,9 @@ const plans = [
     name: 'Team',
     price: { monthly: 15, yearly: 149 },
     description: 'Share design systems across your entire team.',
-    cta: 'Get Team',
+    cta: 'Coming Soon',
     ctaHref: '#',
-    ctaStyle: 'border border-zinc-700 hover:border-violet-500/50 text-zinc-300 hover:text-white hover:bg-violet-500/5',
+    ctaStyle: 'border border-zinc-800 text-zinc-600 cursor-not-allowed',
     popular: false,
     features: [
       'Everything in Pro',
@@ -174,7 +174,8 @@ export default function Pricing({ standalone = false }: { standalone?: boolean }
 
               {/* CTA */}
               <a
-                href={plan.ctaHref}
+                href={plan.cta === 'Coming Soon' ? undefined : plan.ctaHref}
+                onClick={plan.cta === 'Coming Soon' ? (e) => e.preventDefault() : undefined}
                 className={`block text-center py-2.5 px-4 rounded-xl text-sm font-semibold transition-all duration-200 mb-7 ${plan.ctaStyle}`}
               >
                 {plan.cta}
