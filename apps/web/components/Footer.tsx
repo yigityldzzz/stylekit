@@ -19,7 +19,7 @@ const footerLinks = {
     { label: 'About', href: 'https://digitaladexpert.de', external: true },
     { label: 'Twitter / X', href: 'https://x.com/DigitalExpertDE', external: true },
     { label: 'Contact', href: 'mailto:info@digitaladexpert.de', external: true },
-    { label: 'Privacy Policy', href: '#', external: false },
+    { label: 'Privacy Policy', href: '/privacy', external: false },
     { label: 'Terms of Service', href: '#', external: false },
   ],
 }
@@ -115,7 +115,7 @@ export default function Footer() {
             . All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+            <a href="/privacy" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
               Privacy Policy
             </a>
             <span className="text-zinc-800">·</span>
