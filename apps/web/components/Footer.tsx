@@ -20,7 +20,7 @@ const footerLinks = {
     { label: 'Twitter / X', href: 'https://x.com/DigitalExpertDE', external: true },
     { label: 'Contact', href: 'mailto:info@digitaladexpert.de', external: true },
     { label: 'Privacy Policy', href: '/privacy', external: false },
-    { label: 'Terms of Service', href: '#', external: false },
+    { label: 'Terms of Service', href: '/terms', external: false },
   ],
 }
 
@@ -119,7 +119,7 @@ export default function Footer() {
               Privacy Policy
             </a>
             <span className="text-zinc-800">·</span>
-            <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+            <a href="/terms" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
               Terms of Service
             </a>
             <span className="text-zinc-800">·</span>
