@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'StyleKit',
+    images: [{ url: `${siteUrl}/og-image.png`, width: 1200, height: 630, alt: 'StyleKit — Extract any website\'s design system in one click' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -47,6 +48,7 @@ export const metadata: Metadata = {
     description: 'Free Chrome Extension. Extract design tokens from any site → AI-ready DESIGN.md in 1 click.',
     site: '@DigitalExpertDE',
     creator: '@DigitalExpertDE',
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
