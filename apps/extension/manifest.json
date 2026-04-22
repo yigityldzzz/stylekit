@@ -5,8 +5,7 @@
   "description": "Automatically extract design tokens (colors, typography, spacing, shadows, border-radius) from any website and export as DESIGN.md",
   "permissions": [
     "activeTab",
-    "scripting",
-    "tabs"
+    "scripting"
   ],
   "background": {
     "service_worker": "background.js"

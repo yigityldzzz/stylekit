@@ -21,45 +21,31 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
  */
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "extractFromActiveTab") {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const tab = tabs[0];
-      if (!tab) {
-        sendResponse({ success: false, error: "No active tab found." });
-        return;
-      }
+    const tabId = message.tabId;
+    if (!tabId) {
+      sendResponse({ success: false, error: "No tab ID provided." });
+      return true;
+    }
 
-      // First inject the content script programmatically (in case the user
-      // opened the popup on a tab loaded before the extension was installed).
-      chrome.scripting.executeScript(
-        {
-          target: { tabId: tab.id },
-          files: ["content-script.js"],
-        },
-        () => {
-          // Ignore "already exists" errors – the script may already be present.
-          const lastError = chrome.runtime.lastError;
-          if (lastError && !lastError.message.includes("already")) {
-            sendResponse({ success: false, error: lastError.message });
-            return;
-          }
-
-          // Now send the extraction message to the content script.
-          chrome.tabs.sendMessage(
-            tab.id,
-            { action: "extractTokens" },
-            (response) => {
-              if (chrome.runtime.lastError) {
-                sendResponse({ success: false, error: chrome.runtime.lastError.message });
-              } else {
-                sendResponse(response);
-              }
-            }
-          );
+    chrome.scripting.executeScript(
+      { target: { tabId }, files: ["content-script.js"] },
+      () => {
+        const lastError = chrome.runtime.lastError;
+        if (lastError && !lastError.message.includes("already")) {
+          sendResponse({ success: false, error: lastError.message });
+          return;
         }
-      );
-    });
 
-    // Return true so the message channel stays open for the async response.
+        chrome.tabs.sendMessage(tabId, { action: "extractTokens" }, (response) => {
+          if (chrome.runtime.lastError) {
+            sendResponse({ success: false, error: chrome.runtime.lastError.message });
+          } else {
+            sendResponse(response);
+          }
+        });
+      }
+    );
+
     return true;
   }
 });

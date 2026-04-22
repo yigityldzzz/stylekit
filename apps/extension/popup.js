@@ -186,18 +186,23 @@
   function runExtraction() {
     showState("loading");
 
-    chrome.runtime.sendMessage({ action: "extractFromActiveTab" }, (response) => {
-      if (chrome.runtime.lastError) {
-        showError(chrome.runtime.lastError.message);
-        return;
-      }
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs[0];
+      if (!tab) { showError("No active tab found."); return; }
 
-      if (!response || !response.success) {
-        showError(response ? response.error : "No response from page.");
-        return;
-      }
+      chrome.runtime.sendMessage({ action: "extractFromActiveTab", tabId: tab.id }, (response) => {
+        if (chrome.runtime.lastError) {
+          showError(chrome.runtime.lastError.message);
+          return;
+        }
 
-      renderResults(response.tokens, response.designMd);
+        if (!response || !response.success) {
+          showError(response ? response.error : "No response from page.");
+          return;
+        }
+
+        renderResults(response.tokens, response.designMd);
+      });
     });
   }
 
