@@ -98,6 +98,16 @@ export default function Hero() {
               Works with any website&nbsp;&nbsp;·&nbsp;&nbsp;No account required&nbsp;&nbsp;·&nbsp;&nbsp;Free forever
             </p>
 
+            {/* ProductHunt badge — activate on launch day by replacing href and post_id */}
+            {/* <a href="https://www.producthunt.com/posts/stylekit" target="_blank" rel="noopener noreferrer" className="inline-block mt-4">
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=YOUR_POST_ID&theme=dark"
+                alt="StyleKit on Product Hunt"
+                width="250"
+                height="54"
+              />
+            </a> */}
+
             {/* CLI snippet */}
             <div className="mt-8 flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 max-w-sm mx-auto lg:mx-0">
               <div className="flex-shrink-0 w-7 h-7 rounded-md bg-violet-600/20 flex items-center justify-center">
