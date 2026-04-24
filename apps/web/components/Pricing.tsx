@@ -116,7 +116,7 @@ export default function Pricing({ standalone = false }: { standalone?: boolean }
             >
               Yearly
               <span className="text-xs px-1.5 py-0.5 rounded-full bg-violet-500/20 text-violet-400 font-medium">
-                Save 20%
+                Save 34%
               </span>
             </button>
           </div>
@@ -151,12 +151,14 @@ export default function Pricing({ standalone = false }: { standalone?: boolean }
               <div className="mb-6">
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-4xl font-bold text-white">
-                    ${yearly ? plan.price.yearly : plan.price.monthly * 12}
+                    ${plan.price.yearly === 0
+                      ? 0
+                      : yearly
+                        ? Math.round(plan.price.yearly / 12)
+                        : plan.price.monthly}
                   </span>
                   {plan.price.yearly > 0 && (
-                    <span className="text-sm text-zinc-500">
-                      {yearly ? '/year' : '/year'}
-                    </span>
+                    <span className="text-sm text-zinc-500">/month</span>
                   )}
                 </div>
                 {plan.price.yearly === 0 && (
@@ -164,9 +166,9 @@ export default function Pricing({ standalone = false }: { standalone?: boolean }
                 )}
                 {plan.price.yearly > 0 && (
                   <div className="text-xs text-zinc-600 mt-1">
-                    ~${yearly
-                      ? Math.round(plan.price.yearly / 12)
-                      : plan.price.monthly} per month
+                    {yearly
+                      ? `billed $${plan.price.yearly}/year`
+                      : `billed $${plan.price.monthly * 12}/year`}
                   </div>
                 )}
               </div>
