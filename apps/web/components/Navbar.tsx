@@ -83,7 +83,7 @@ export default function Navbar() {
               GitHub
             </a>
             <a
-              href="#"
+              href="https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge"
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-all duration-200 shadow-lg shadow-violet-900/30 hover:shadow-violet-900/50"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -134,7 +134,7 @@ export default function Navbar() {
             ))}
             <div className="pt-2 flex flex-col gap-2">
               <a
-                href="#"
+                href="https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge"
                 className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-colors"
               >
                 Add to Chrome — Free

@@ -115,7 +115,7 @@ export default function PricingPage() {
             </p>
             <div className="relative flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="#"
+                href="https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-violet-900/40"
               >
                 Add to Chrome — Free
