@@ -81,6 +81,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
+                maxLength={254}
                 placeholder="you@example.com"
                 className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-violet-500 rounded-xl text-sm text-white placeholder-zinc-600 outline-none transition-colors"
               />
@@ -92,6 +93,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 required
+                maxLength={128}
                 placeholder="••••••••"
                 className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-violet-500 rounded-xl text-sm text-white placeholder-zinc-600 outline-none transition-colors"
               />
