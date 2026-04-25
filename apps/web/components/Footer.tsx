@@ -14,6 +14,7 @@ const footerLinks = {
     { label: 'Changelog', href: 'https://github.com/yigityldzzz/stylekit/commits/main', external: true },
   ],
   Company: [
+    { label: 'Built by Digital Ad Expert', href: 'https://digitaladexpert.de', external: true },
     { label: 'Twitter / X', href: 'https://x.com/DigitalExpertDE', external: true },
     { label: 'Contact', href: 'mailto:info@digitaladexpert.de', external: true },
     { label: 'Privacy Policy', href: '/privacy', external: false },
