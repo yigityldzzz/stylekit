@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'Do you offer student or open-source discounts?',
-    a: 'Yes! Reach out to us at hello@stylekit.dev with proof of your student email or open-source project, and we\'ll set you up with a discount.',
+    a: 'Yes! Reach out to us at info@digitaladexpert.de with proof of your student email or open-source project, and we\'ll set you up with a discount.',
   },
 ]
 
