@@ -94,6 +94,30 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'StyleKit',
+              url: siteUrl,
+              logo: `${siteUrl}/og-image.png`,
+              description: 'StyleKit extracts design tokens from any website and generates AI-ready DESIGN.md files for Claude Code, Cursor, Copilot and more.',
+              email: 'info@digitaladexpert.de',
+              sameAs: [
+                'https://github.com/yigityldzzz/stylekit',
+                'https://x.com/DigitalExpertDE',
+                'https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge',
+              ],
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'Digital Ad Expert',
+                url: 'https://digitaladexpert.de',
+              },
+            }),
+          }}
+        />
         {children}
         <Analytics />
       </body>
