@@ -6,7 +6,7 @@ const steps = [
     title: 'Install the Chrome Extension',
     description:
       'Add StyleKit to Chrome in seconds. It\'s free, lightweight, and requires no account or login to get started.',
-    cta: { label: 'Add to Chrome — Free', href: '#' },
+    cta: { label: 'Add to Chrome — Free', href: 'https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge' },
     visual: (
       <div className="relative flex items-center justify-center h-40">
         <div className="relative">
@@ -67,7 +67,7 @@ const steps = [
     title: 'Copy your DESIGN.md and use it with AI',
     description:
       'Your DESIGN.md is ready instantly. Copy it and paste into Claude Code, Cursor, or any AI coding tool. Your AI assistant now understands the exact design system.',
-    cta: { label: 'View an example DESIGN.md', href: '#' },
+    cta: { label: 'View an example DESIGN.md', href: '/docs#design-md-format' },
     visual: (
       <div className="relative flex items-center justify-center h-40">
         <div className="w-56">
