@@ -79,7 +79,7 @@ const features = [
     ),
     title: 'Design Skills Library',
     description:
-      '50+ pre-built design systems from top products like Vercel, Linear, Stripe, and more — ready to use in your projects immediately.',
+      '10 pre-built style skills (minimal, dark-mode, brutalist, glassmorphism, and more) — ready to use in your projects immediately, or extract your own from any site you extract.',
     accent: 'text-rose-400',
     glow: 'group-hover:shadow-rose-900/20',
     border: 'group-hover:border-rose-500/30',

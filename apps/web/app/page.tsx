@@ -8,7 +8,7 @@ import Footer from '@/components/Footer'
 
 const stats = [
   { value: '10+', label: 'AI tools supported' },
-  { value: '50+', label: 'Design skills' },
+  { value: '10', label: 'Design skills' },
   { value: '1-click', label: 'Extraction' },
   { value: 'Free', label: 'To get started' },
 ]

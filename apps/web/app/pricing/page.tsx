@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: 'Is the Chrome Extension really free forever?',
-    a: 'Yes. The Chrome Extension and 5 design skills are free forever, no credit card required. We believe great tooling should be accessible to everyone.',
+    a: 'Yes. The Chrome Extension and all 10 built-in design skills are free forever, no credit card required. We believe great tooling should be accessible to everyone.',
   },
   {
     q: 'What payment methods do you accept?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'What is a "Design Skill"?',
-    a: 'A Design Skill is a curated DESIGN.md file for a specific brand or product — Vercel, Linear, Stripe, etc. Free users get 5 skills; Pro users get unlimited access plus the ability to extract and save their own.',
+    a: 'A Design Skill is a curated DESIGN.md file capturing a complete style system (colors, typography, spacing, and more) — StyleKit ships 10 built-in style skills (minimal, dark-mode, brutalist, glassmorphism, and more) to start from, and you can extract and save your own from any site with the extension.',
   },
   {
     q: 'What does "Team Registry" mean?',
