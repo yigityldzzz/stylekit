@@ -9,7 +9,7 @@ const plans = [
     price: { monthly: 0, yearly: 0 },
     description: 'Perfect for trying StyleKit and personal projects.',
     cta: 'Add to Chrome — Free',
-    ctaHref: '#',
+    ctaHref: 'https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge',
     ctaStyle: 'border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white hover:bg-white/5',
     popular: false,
     features: [
