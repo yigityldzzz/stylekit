@@ -197,6 +197,19 @@ html, body {
 
 .btn-ghost:hover { color: var(--text-2); background: var(--bg-hover); border-radius: var(--r-sm); }
 
+.btn-publish {
+  background: transparent;
+  color: var(--accent-2);
+  border: 1px solid var(--accent);
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-publish:hover {
+  background: var(--accent-glow);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
 /* ── Section card ────────────────────────────────────────────────────────── */
 .section {
   background: var(--bg-card);

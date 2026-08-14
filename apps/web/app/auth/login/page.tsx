@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/dashboard'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -23,14 +25,14 @@ export default function LoginPage() {
       setError(error.message)
       setLoading(false)
     } else {
-      router.push('/dashboard')
+      router.push(redirectTo)
     }
   }
 
   async function handleGoogle() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/dashboard` },
+      options: { redirectTo: `${window.location.origin}${redirectTo}` },
     })
   }
 
@@ -112,12 +114,24 @@ export default function LoginPage() {
 
           <p className="text-center text-xs text-zinc-600 mt-6">
             Don&apos;t have an account?{' '}
-            <Link href="/auth/register" className="text-violet-400 hover:text-violet-300">
+            <Link href={`/auth/register${redirectTo !== '/dashboard' ? `?redirect=${encodeURIComponent(redirectTo)}` : ''}`} className="text-violet-400 hover:text-violet-300">
               Sign up free
             </Link>
           </p>
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   )
 }

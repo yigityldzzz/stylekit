@@ -3,6 +3,7 @@ import Link from 'next/link'
 const footerLinks = {
   Product: [
     { label: 'Chrome Extension', href: 'https://chromewebstore.google.com/detail/stylekit/jbbngpjghnifmnmlfcjacooakmhhglge', external: true },
+    { label: 'Community Gallery', href: '/gallery', external: false },
     { label: 'CLI Tool', href: '/docs#cli-reference', external: false },
     { label: 'Design Skills Library', href: '/docs#design-skills', external: false },
     { label: 'Pricing', href: '/pricing', external: false },

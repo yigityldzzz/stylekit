@@ -11,6 +11,7 @@
 
   let currentDesignMd = "";
   let currentTokens   = null;
+  let currentTabUrl   = "";
 
   // ─── DOM refs ─────────────────────────────────────────────────────────────
 
@@ -24,6 +25,7 @@
   const $btnRetry       = document.getElementById("btn-retry");
   const $btnCopy        = document.getElementById("btn-copy");
   const $btnDownload    = document.getElementById("btn-download");
+  const $btnPublish     = document.getElementById("btn-publish");
   const $btnReextract   = document.getElementById("btn-reextract");
   const $colorsGrid     = document.getElementById("colors-grid");
   const $colorsCount    = document.getElementById("colors-count");
@@ -216,6 +218,7 @@
   function loadSiteUrl() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs && tabs[0]) {
+        currentTabUrl = tabs[0].url || "";
         try {
           const url = new URL(tabs[0].url);
           $siteUrl.textContent = url.hostname + (url.pathname !== "/" ? url.pathname : "");
@@ -266,6 +269,33 @@
     });
   }
 
+  // ─── Publish to Gallery ───────────────────────────────────────────────────
+  // Opens the website's publish flow in a new tab with the extraction data
+  // passed via a URL parameter. The extension itself never needs to know
+  // about accounts/auth — the website handles sign-in and the actual save.
+
+  function publishToGallery() {
+    if (!currentTokens) return;
+
+    let hostname = currentTabUrl;
+    try {
+      hostname = new URL(currentTabUrl).hostname;
+    } catch {
+      // keep raw value as fallback
+    }
+
+    const payload = {
+      tokens: currentTokens,
+      sourceUrl: currentTabUrl,
+      sourceHost: hostname,
+    };
+
+    const encoded = encodeURIComponent(JSON.stringify(payload));
+    const publishUrl = "https://stylekit.digitaladexpert.de/gallery/publish?data=" + encoded;
+
+    chrome.tabs.create({ url: publishUrl });
+  }
+
   // ─── Event listeners ──────────────────────────────────────────────────────
 
   $btnExtract.addEventListener("click",   runExtraction);
@@ -273,6 +303,7 @@
   $btnReextract.addEventListener("click", runExtraction);
   $btnCopy.addEventListener("click",      copyDesignMd);
   $btnDownload.addEventListener("click",  downloadDesignMd);
+  $btnPublish.addEventListener("click",   publishToGallery);
 
   // ─── Init ─────────────────────────────────────────────────────────────────
 

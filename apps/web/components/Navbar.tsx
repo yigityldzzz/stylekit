@@ -62,6 +62,12 @@ export default function Navbar() {
               Pricing
             </Link>
             <Link
+              href="/gallery"
+              className="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
+            >
+              Gallery
+            </Link>
+            <Link
               href="/docs"
               className="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
             >
@@ -127,6 +133,7 @@ export default function Navbar() {
               { href: '/#features', label: 'Features' },
               { href: '/#how-it-works', label: 'How it works' },
               { href: '/pricing', label: 'Pricing' },
+              { href: '/gallery', label: 'Gallery' },
               { href: '/docs', label: 'Docs' },
             ].map((item) => (
               <a

@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
-export default function RegisterPage() {
-  const router = useRouter()
+function RegisterForm() {
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/dashboard'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -21,7 +22,7 @@ export default function RegisterPage() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: `${window.location.origin}/dashboard` },
+      options: { emailRedirectTo: `${window.location.origin}${redirectTo}` },
     })
 
     if (error) {
@@ -35,7 +36,7 @@ export default function RegisterPage() {
   async function handleGoogle() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/dashboard` },
+      options: { redirectTo: `${window.location.origin}${redirectTo}` },
     })
   }
 
@@ -131,12 +132,24 @@ export default function RegisterPage() {
 
           <p className="text-center text-xs text-zinc-600 mt-6">
             Already have an account?{' '}
-            <Link href="/auth/login" className="text-violet-400 hover:text-violet-300">
+            <Link href={`/auth/login${redirectTo !== '/dashboard' ? `?redirect=${encodeURIComponent(redirectTo)}` : ''}`} className="text-violet-400 hover:text-violet-300">
               Sign in
             </Link>
           </p>
         </div>
       </div>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <RegisterForm />
+    </Suspense>
   )
 }
