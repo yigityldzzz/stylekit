@@ -31,9 +31,10 @@ function parseBoxShadow(input) {
   let s = input.trim();
   if (!s || /^none$/i.test(s)) return null;
   s = s.replace(/^inset\s+/i, '').replace(/\s+inset$/i, '');
+  const anyFunctionMatch = s.match(/[a-z]+\([^)]*\)/i);
   const colorMatch = s.match(/(#[0-9a-f]{3,8}\b|rgba?\([^)]+\))/i);
   const color = colorMatch ? parseColor(colorMatch[0]) : null;
-  const withoutColor = colorMatch ? s.replace(colorMatch[0], ' ') : s;
+  const withoutColor = anyFunctionMatch ? s.replace(anyFunctionMatch[0], ' ') : s;
   const numbers = withoutColor.split(/\s+/).filter(Boolean).map((tok) => parseFloat(tok)).filter((n) => !Number.isNaN(n));
   if (numbers.length < 2) return null;
   return {
@@ -81,6 +82,12 @@ check('offsets-only, no blur/spread', (() => { const p = parseBoxShadow('2px 2px
 check('inset prefix stripped, offsets still parsed', (() => { const p = parseBoxShadow('inset 0px 1px 2px rgba(0,0,0,.2)'); return [p.offsetX, p.offsetY, p.blur, p.spread]; })(), [0, 1, 2, 0]);
 check('none returns null', parseBoxShadow('none'), null);
 check('empty returns null', parseBoxShadow(''), null);
+check(
+  'real-world bug: oklch() color must not leak numbers into offsets (figma.com extraction)',
+  (() => { const p = parseBoxShadow('oklch(0 0 none / 0.16) 0px 1px 0px 0px'); return [p.offsetX, p.offsetY, p.blur, p.spread]; })(),
+  [0, 1, 0, 0]
+);
+check('oklch() color falls back to default gray (unparseable, but no crash)', parseBoxShadow('oklch(0 0 none / 0.16) 0px 1px 0px 0px').color, { r: 0, g: 0, b: 0, a: 0.25 });
 check('color missing falls back to default gray', parseBoxShadow('0px 1px 2px').color, { r: 0, g: 0, b: 0, a: 0.25 });
 
 // -- parseLength --

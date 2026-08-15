@@ -75,10 +75,18 @@ function parseBoxShadow(input: string): ParsedShadow | null {
   s = s.replace(/^inset\s+/i, '').replace(/\s+inset$/i, '');
 
   // Pull the color out first (it can be at the start or the end) so the
-  // remaining string is just space-separated lengths.
+  // remaining string is just space-separated lengths. We only know how to
+  // parse hex/rgb(a) into an actual color, but modern getComputedStyle()
+  // output can also emit oklch()/oklab()/lab()/lch()/color() — any
+  // function-call-shaped token needs to be stripped from the string before
+  // extracting numbers regardless of whether we can parse its color,
+  // otherwise numbers embedded inside it (e.g. oklch(0 0 none / 0.16)'s
+  // 0.16) leak into the offset/blur/spread extraction below and produce
+  // silently wrong (not just wrong-colored) shadows.
+  const anyFunctionMatch = s.match(/[a-z]+\([^)]*\)/i);
   const colorMatch = s.match(/(#[0-9a-f]{3,8}\b|rgba?\([^)]+\))/i);
   const color = colorMatch ? parseColor(colorMatch[0]) : null;
-  const withoutColor = colorMatch ? s.replace(colorMatch[0], ' ') : s;
+  const withoutColor = anyFunctionMatch ? s.replace(anyFunctionMatch[0], ' ') : s;
 
   const numbers = withoutColor
     .split(/\s+/)
