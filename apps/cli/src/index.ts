@@ -7,6 +7,7 @@ import { runInit } from './commands/init';
 import { runList } from './commands/list';
 import { runPull } from './commands/pull';
 import { runGenerate } from './commands/generate';
+import { runGallery } from './commands/gallery';
 
 const program = new Command();
 
@@ -56,6 +57,18 @@ program
   .action(async () => {
     try {
       await runGenerate();
+    } catch (err) {
+      handleError(err);
+    }
+  });
+
+program
+  .command('gallery [search]')
+  .description('Browse the Community Gallery and pull a real extracted design system into DESIGN.md')
+  .option('--json <file>', 'Import a token JSON file instead of browsing the gallery (from the extension\'s "Copy Tokens (JSON)" button)')
+  .action(async (search: string | undefined, options: { json?: string }) => {
+    try {
+      await runGallery(search, options);
     } catch (err) {
       handleError(err);
     }

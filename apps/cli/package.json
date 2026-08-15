@@ -12,6 +12,7 @@
     "dev:init": "tsx src/index.ts init",
     "dev:list": "tsx src/index.ts list",
     "dev:pull": "tsx src/index.ts pull minimal",
+    "dev:gallery": "tsx src/index.ts gallery",
     "dev:generate": "tsx src/index.ts generate"
   },
   "keywords": [
