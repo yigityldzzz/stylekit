@@ -8,10 +8,7 @@
     "noEmitOnError": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "typeRoots": [
-      "./node_modules/@figma", "./node_modules/@types",
-      "../../node_modules/@figma", "../../node_modules/@types"
-    ]
+    "typeRoots": ["./node_modules/@figma", "../../node_modules/@figma"]
   },
   "include": ["src/code.ts"]
 }
