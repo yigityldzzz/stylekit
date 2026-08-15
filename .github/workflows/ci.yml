@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  extension:
+    name: Extension (syntax check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check JS syntax
+        run: |
+          for f in apps/extension/*.js; do
+            echo "checking $f"
+            node --check "$f"
+          done
+
+  web:
+    name: Web (typecheck)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        working-directory: apps/web
+        run: npx tsc --noEmit
+
+  cli:
+    name: CLI (build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build
+        working-directory: apps/cli
+        run: npm run build
+
+  figma-plugin:
+    name: Figma plugin (build + tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build against real Figma typings
+        working-directory: apps/figma-plugin
+        run: npm run build
+      - name: Parsing logic unit tests
+        working-directory: apps/figma-plugin
+        run: node test_parsing.js
