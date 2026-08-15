@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 12px;
+    color: var(--figma-color-text, #1a1a1a);
+    background: var(--figma-color-bg, #fff);
+  }
+  .tabs { display: flex; border-bottom: 1px solid var(--figma-color-border, #e6e6e6); }
+  .tab {
+    flex: 1; padding: 10px 0; text-align: center; cursor: pointer;
+    font-weight: 600; color: var(--figma-color-text-secondary, #666);
+    border-bottom: 2px solid transparent;
+  }
+  .tab.active { color: var(--figma-color-text, #1a1a1a); border-bottom-color: #8b5cf6; }
+  .panel { display: none; padding: 12px; }
+  .panel.active { display: block; }
+
+  .gallery-list { display: flex; flex-direction: column; gap: 8px; max-height: 440px; overflow-y: auto; }
+  .gallery-item {
+    border: 1px solid var(--figma-color-border, #e6e6e6); border-radius: 8px; padding: 10px;
+    cursor: pointer; transition: border-color .15s;
+  }
+  .gallery-item:hover { border-color: #8b5cf6; }
+  .gallery-item .title { font-weight: 600; margin-bottom: 4px; }
+  .gallery-item .meta { color: var(--figma-color-text-secondary, #666); font-size: 11px; margin-bottom: 6px; }
+  .swatches { display: flex; gap: 4px; }
+  .swatch { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,.08); }
+
+  textarea {
+    width: 100%; height: 260px; font-family: ui-monospace, monospace; font-size: 11px;
+    border: 1px solid var(--figma-color-border, #e6e6e6); border-radius: 6px; padding: 8px;
+    resize: vertical; background: var(--figma-color-bg-secondary, #fafafa); color: inherit;
+  }
+  .hint { color: var(--figma-color-text-secondary, #666); font-size: 11px; margin: 8px 0; line-height: 1.5; }
+  .hint a { color: #8b5cf6; }
+  button.primary {
+    width: 100%; margin-top: 10px; padding: 9px; border: none; border-radius: 6px;
+    background: #8b5cf6; color: #fff; font-weight: 600; cursor: pointer;
+  }
+  button.primary:disabled { opacity: .5; cursor: default; }
+  .status { margin-top: 8px; font-size: 11px; text-align: center; min-height: 14px; }
+  .status.error { color: #e5484d; }
+  .status.success { color: #30a46c; }
+  .empty { text-align: center; color: var(--figma-color-text-secondary, #666); padding: 30px 10px; }
+  .spinner { text-align: center; padding: 30px 10px; color: var(--figma-color-text-secondary, #666); }
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tab active" data-tab="gallery">Community Gallery</div>
+  <div class="tab" data-tab="paste">Paste JSON</div>
+</div>
+
+<div class="panel active" id="panel-gallery">
+  <div id="gallery-list" class="gallery-list"><div class="spinner">Loading gallery…</div></div>
+</div>
+
+<div class="panel" id="panel-paste">
+  <div class="hint">
+    Paste a StyleKit token JSON — copy it from the extension's <b>Copy Tokens (JSON)</b> button,
+    or from a <a href="https://stylekit.digitaladexpert.de/gallery" target="_blank">gallery</a> entry.
+  </div>
+  <textarea id="json-input" placeholder='{"colors":["#8b5cf6", "#111827"], "typography": {"families":["Inter"],"sizes":["14px","16px"],"weights":["400","600"]}, "spacing":["8px","16px"], "borderRadius":["4px","8px"], "shadows":["0px 1px 2px rgba(0,0,0,.1)"]}'></textarea>
+  <button class="primary" id="btn-import-json">Import into Figma</button>
+</div>
+
+<div class="status" id="status"></div>
+
+<script>
+const SUPABASE_URL = 'https://evejevftdnqxbhbkjpaj.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_GcT1Cx3mqdKbFbS7DwnI4A_VPSuAPZQ'; // public/anon key — safe client-side, same one used by the website
+
+const tabs = document.querySelectorAll('.tab');
+const panels = { gallery: document.getElementById('panel-gallery'), paste: document.getElementById('panel-paste') };
+tabs.forEach((t) => t.addEventListener('click', () => {
+  tabs.forEach((x) => x.classList.remove('active'));
+  Object.values(panels).forEach((p) => p.classList.remove('active'));
+  t.classList.add('active');
+  panels[t.dataset.tab].classList.add('active');
+}));
+
+const statusEl = document.getElementById('status');
+function setStatus(msg, kind) {
+  statusEl.textContent = msg || '';
+  statusEl.className = 'status' + (kind ? ' ' + kind : '');
+}
+
+function sendImport(tokens, sourceLabel) {
+  parent.postMessage({ pluginMessage: { type: 'import-tokens', tokens, sourceLabel } }, '*');
+  setStatus('Importing…');
+}
+
+// ── Gallery tab ──────────────────────────────────────────────────────────
+async function loadGallery() {
+  const listEl = document.getElementById('gallery-list');
+  try {
+    const res = await fetch(
+      SUPABASE_URL + '/rest/v1/gallery_extractions?select=id,title,author_label,category,tokens,clone_count&order=clone_count.desc&limit=25',
+      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY } }
+    );
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rows = await res.json();
+    if (!rows.length) {
+      listEl.innerHTML = '<div class="empty">Gallery is empty right now.<br>Extract a site with the StyleKit extension and publish it!</div>';
+      return;
+    }
+    listEl.innerHTML = '';
+    rows.forEach((row) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const swatches = (row.tokens && row.tokens.colors ? row.tokens.colors : []).slice(0, 8)
+        .map((c) => `<div class="swatch" style="background:${c}"></div>`).join('');
+      item.innerHTML = `
+        <div class="title">${escapeHtml(row.title || 'Untitled')}</div>
+        <div class="meta">${escapeHtml(row.author_label || 'anonymous')} · ${escapeHtml(row.category || '')} · ${row.clone_count || 0} imports</div>
+        <div class="swatches">${swatches}</div>
+      `;
+      item.addEventListener('click', () => {
+        if (!row.tokens) { setStatus('This entry has no token data.', 'error'); return; }
+        sendImport(row.tokens, row.title || 'Gallery');
+      });
+      listEl.appendChild(item);
+    });
+  } catch (err) {
+    listEl.innerHTML = '<div class="empty">Could not load the gallery.<br>' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+loadGallery();
+
+// ── Paste JSON tab ───────────────────────────────────────────────────────
+document.getElementById('btn-import-json').addEventListener('click', () => {
+  const raw = document.getElementById('json-input').value.trim();
+  if (!raw) { setStatus('Paste a token JSON first.', 'error'); return; }
+  let tokens;
+  try {
+    tokens = JSON.parse(raw);
+  } catch (e) {
+    setStatus('Invalid JSON: ' + e.message, 'error');
+    return;
+  }
+  if (!tokens.colors && !tokens.shadows && !tokens.typography) {
+    setStatus('This does not look like a StyleKit token set.', 'error');
+    return;
+  }
+  tokens.typography = tokens.typography || { families: [], sizes: [], weights: [] };
+  tokens.colors = tokens.colors || [];
+  tokens.spacing = tokens.spacing || [];
+  tokens.borderRadius = tokens.borderRadius || [];
+  tokens.shadows = tokens.shadows || [];
+  sendImport(tokens, 'Pasted');
+});
+
+// ── Result handling ──────────────────────────────────────────────────────
+window.onmessage = (event) => {
+  const msg = event.data.pluginMessage;
+  if (!msg) return;
+  if (msg.type === 'import-result') {
+    if (msg.success) {
+      const s = msg.summary;
+      setStatus(`Done — ${s.colors} colors, ${s.textStyles} text styles, ${s.effects} effects, ${s.variables} variables.`, 'success');
+    } else {
+      setStatus('Import failed: ' + msg.error, 'error');
+    }
+  }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["ES2017"],
+    "module": "none",
+    "moduleResolution": "node",
+    "strict": true,
+    "noEmitOnError": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "typeRoots": [
+      "./node_modules/@figma", "./node_modules/@types",
+      "../../node_modules/@figma", "../../node_modules/@types"
+    ]
+  },
+  "include": ["src/code.ts"]
+}

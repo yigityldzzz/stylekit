@@ -26,6 +26,7 @@
   const $btnCopy        = document.getElementById("btn-copy");
   const $btnDownload    = document.getElementById("btn-download");
   const $btnPublish     = document.getElementById("btn-publish");
+  const $btnCopyJson    = document.getElementById("btn-copy-json");
   const $btnReextract   = document.getElementById("btn-reextract");
   const $colorsGrid     = document.getElementById("colors-grid");
   const $colorsCount    = document.getElementById("colors-count");
@@ -239,6 +240,14 @@
       .catch(() => showToast("Copy failed.", "error"));
   }
 
+  function copyTokensJson() {
+    if (!currentTokens) return;
+    navigator.clipboard
+      .writeText(JSON.stringify(currentTokens, null, 2))
+      .then(() => showToast("Tokens copied — paste into the StyleKit Figma plugin!"))
+      .catch(() => showToast("Copy failed.", "error"));
+  }
+
   function downloadDesignMd() {
     if (!currentDesignMd) return;
 
@@ -304,6 +313,7 @@
   $btnCopy.addEventListener("click",      copyDesignMd);
   $btnDownload.addEventListener("click",  downloadDesignMd);
   $btnPublish.addEventListener("click",   publishToGallery);
+  $btnCopyJson.addEventListener("click",  copyTokensJson);
 
   // ─── Init ─────────────────────────────────────────────────────────────────
 

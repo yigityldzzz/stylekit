@@ -1,0 +1,14 @@
+{
+  "name": "stylekit-figma-plugin",
+  "version": "1.0.0",
+  "description": "StyleKit for Figma — browse the community gallery or paste extracted tokens, import as native Figma styles and variables.",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.101.0",
+    "typescript": "^5.4.5"
+  }
+}
